@@ -1,0 +1,113 @@
+table DimCalendario
+	lineageTag: cdd38eeb-fa3c-487a-8f8f-c98bdc8336c0
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: Long Date
+		lineageTag: f270f72e-e5fc-4fe7-a303-13a7b131abb0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		formatString: 0
+		lineageTag: 38162079-9746-4519-aa2c-c4de9aa71b10
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Ano]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNumero
+		formatString: 0
+		lineageTag: ddb0972d-1eba-4da8-b236-b1dd6360f16b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesNumero]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		lineageTag: 7de75a13-724a-44e9-8590-2fb81e1d2f8c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes]
+		sortByColumn: MesNumero
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAbrev
+		lineageTag: 6af1358b-8f91-4958-bd99-5a567f581921
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesAbrev]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		lineageTag: cdd618f6-f677-4f8f-99ee-ac9eafbdf543
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		formatString: 0
+		lineageTag: b26096e1-cf57-4f01-a1ff-00377b863f48
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Dia]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNumero
+		formatString: 0
+		lineageTag: 5ca5344d-aba0-4615-9a05-8929ec432d8b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaSemanaNumero]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		lineageTag: 45a7064e-df62-4c4d-86fa-69ec6fcf864b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaAno
+		formatString: 0
+		lineageTag: 6d08b42b-cb5a-44a9-89ad-c6a8b0f2bfdb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SemanaAno]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCalendario = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS (
+				    CALENDAR ( MIN ( Fato_Clima[Data] ), MAX ( Fato_Clima[Data] ) ),
+				    "Ano", YEAR ( [Date] ),
+				    "MesNumero", MONTH ( [Date] ),
+				    "Mes", FORMAT ( [Date], "MMMM" ),
+				    "MesAbrev", FORMAT ( [Date], "MMM" ),
+				    "Trimestre", "T" & FORMAT ( [Date], "Q" ),
+				    "Dia", DAY ( [Date] ),
+				    "DiaSemanaNumero", WEEKDAY ( [Date], 2 ),
+				    "DiaSemana", FORMAT ( [Date], "dddd" ),
+				    "SemanaAno", WEEKNUM ( [Date], 2 )
+				)
+
+	annotation PBI_Id = d2db64aa705b4597ab490fdf6030bf6e
+

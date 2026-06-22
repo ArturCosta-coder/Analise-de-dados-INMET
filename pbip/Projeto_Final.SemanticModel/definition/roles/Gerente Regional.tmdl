@@ -1,0 +1,7 @@
+role 'Gerente Regional'
+	modelPermission: read
+
+	tablePermission DimEstacao = [Regiao] == "CO"
+
+	annotation PBI_Id = 83af0728703d4b46b631e08add038bd7
+

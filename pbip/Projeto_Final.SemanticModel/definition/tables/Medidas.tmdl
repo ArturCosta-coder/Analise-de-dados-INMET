@@ -1,0 +1,120 @@
+table Medidas
+	lineageTag: c38402ea-7fcf-4d9f-8c29-b857c113e296
+
+	measure 'Temperatura Média' =
+			
+			AVERAGE(Fato_Clima[Temperatura])
+		lineageTag: cca8ef33-f3c7-4753-a819-20be7f7a4e74
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperatura Máxima' =
+			
+			MAX(Fato_Clima[TemperaturaMax])
+		lineageTag: eb50a88f-ed99-4765-8d9d-9698ba2ba35e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperatura Mínima' =
+			
+			MIN(Fato_Clima[TemperaturaMin])
+		lineageTag: 3bc1c53d-ada6-4ca0-8191-21c96f5b1801
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Precipitação Total' =
+			
+			SUM(Fato_Clima[Precipitacao])
+		lineageTag: 5fedfc32-0647-4157-a7e9-1c9537655465
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Umidade Média' =
+			
+			AVERAGE(Fato_Clima[Umidade])
+		lineageTag: ad2c0687-c381-4dd4-ae4f-23ea7e6cbe66
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pressão Média' =
+			
+			AVERAGE(Fato_Clima[Pressao])
+		lineageTag: ce459c74-b020-4f38-a0f8-4197e1897a31
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Velocidade Média do Vento' =
+			
+			AVERAGE(Fato_Clima[VelocidadeVento])
+		lineageTag: 257ca707-f9cc-424e-801d-53cb70a06cbb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Dias com Chuva' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Clima[Data]),
+			    Fato_Clima[Precipitacao] > 0
+			)
+		formatString: 0
+		lineageTag: 146af087-c8ab-4f93-aaf6-8427b48d89af
+
+	measure 'Total de Registros' =
+			
+			COUNTROWS(Fato_Clima)
+		formatString: 0
+		lineageTag: f17841c9-5742-433f-ba8a-1b93c3f0c8e7
+
+	measure 'Amplitude Térmica' =
+			
+			[Temperatura Máxima] - [Temperatura Mínima]
+		lineageTag: 40e8f8a6-b274-4178-a3d9-51ec4fd679ba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Média de Precipitação' =
+			
+			AVERAGE(Fato_Clima[Precipitacao])
+		lineageTag: bd29d643-fe93-4737-9a09-1e80b3bac52b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ranking Estação' =
+			
+			RANKX(
+			    ALL(DimEstacao[Nome Completo]),
+			    [Temperatura Média],
+			    ,
+			    DESC
+			)
+		formatString: 0
+		lineageTag: bfe9af2c-fb6b-40f1-8a5c-93e1a97c7bd6
+
+	measure 'Diferença Média Geral' =
+			
+			[Temperatura Média]
+			-
+			CALCULATE(
+			    [Temperatura Média],
+			    ALL(DimEstacao)
+			)
+		lineageTag: b76c405f-0db6-41e1-89db-892ea6779f7f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: b6122fb3-033b-45ad-bfef-7ae3ec404c4b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = { BLANK() }
+
+	annotation PBI_Id = 65a7c42e49b84a0e937583a00f67c663
+

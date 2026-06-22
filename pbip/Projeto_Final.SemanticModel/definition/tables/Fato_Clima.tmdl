@@ -1,0 +1,221 @@
+table Fato_Clima
+	lineageTag: c853ec76-3a8e-46cc-a1fd-352a9bb0f5e2
+
+	column NomeArquivo
+		dataType: string
+		lineageTag: 24d40ed3-51ae-46bf-95da-a37fe539497f
+		summarizeBy: none
+		sourceColumn: NomeArquivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 15375b87-03f3-481d-b6e3-3eb536c7d56f
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column HoraUTC
+		dataType: string
+		lineageTag: 5d8b3ec6-86cc-4192-b37d-edd9715f7f00
+		summarizeBy: none
+		sourceColumn: HoraUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Precipitacao
+		dataType: double
+		lineageTag: 822488e4-caf2-445a-93ba-f15cfa222d8d
+		summarizeBy: sum
+		sourceColumn: Precipitacao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Pressao
+		dataType: double
+		lineageTag: f9f74b8b-3d3f-4911-b30e-05e5f131ee84
+		summarizeBy: sum
+		sourceColumn: Pressao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PressaoMax
+		dataType: double
+		lineageTag: c3228639-67cf-4208-9044-fe6687c5d16d
+		summarizeBy: sum
+		sourceColumn: PressaoMax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PressaoMin
+		dataType: double
+		lineageTag: 6b8c2da5-e24a-43e3-ac36-9d14f5ea93c4
+		summarizeBy: sum
+		sourceColumn: PressaoMin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Radiacao
+		dataType: double
+		lineageTag: d862750f-8219-411b-88bf-bd2fa8c8e2f8
+		summarizeBy: sum
+		sourceColumn: Radiacao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Temperatura
+		dataType: double
+		lineageTag: ac3c9e1e-8535-4ad2-8409-f82d2df6816c
+		summarizeBy: sum
+		sourceColumn: Temperatura
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PontoOrvalho
+		dataType: double
+		lineageTag: 9f280160-9728-4ce1-9b7b-106f6bd273e1
+		summarizeBy: sum
+		sourceColumn: PontoOrvalho
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TemperaturaMax
+		dataType: double
+		lineageTag: 051a766f-f689-40e4-bf52-f0a6d4d2a41a
+		summarizeBy: sum
+		sourceColumn: TemperaturaMax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TemperaturaMin
+		dataType: double
+		lineageTag: 44984e2e-42a4-4039-8de8-3f7e784c70a5
+		summarizeBy: sum
+		sourceColumn: TemperaturaMin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrvalhoMax
+		dataType: double
+		lineageTag: 9dc0764e-a3dd-4865-8fe6-a64b36c39bb1
+		summarizeBy: sum
+		sourceColumn: OrvalhoMax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrvalhoMin
+		dataType: double
+		lineageTag: 76f784d6-33e6-4205-94a8-0c340d288658
+		summarizeBy: sum
+		sourceColumn: OrvalhoMin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UmidadeMax
+		dataType: double
+		lineageTag: 94667464-2d9d-4de0-863e-769610a6ffe0
+		summarizeBy: sum
+		sourceColumn: UmidadeMax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UmidadeMin
+		dataType: double
+		lineageTag: 2addb97b-6ea8-4c68-b579-64aa05f549d1
+		summarizeBy: sum
+		sourceColumn: UmidadeMin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Umidade
+		dataType: double
+		lineageTag: 60283ad9-2450-4a3e-9f1f-eccf561ebe75
+		summarizeBy: sum
+		sourceColumn: Umidade
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DirecaoVento
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ceedc3f-a56c-4ac3-93fd-e25a3b4926fa
+		summarizeBy: sum
+		sourceColumn: DirecaoVento
+
+		annotation SummarizationSetBy = Automatic
+
+	column RajadaVento
+		dataType: double
+		lineageTag: 72cf858d-a006-4d34-9dfd-1df1de32de54
+		summarizeBy: sum
+		sourceColumn: RajadaVento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VelocidadeVento
+		dataType: double
+		lineageTag: 931442bb-6273-4122-9363-20c65e4ed85d
+		summarizeBy: sum
+		sourceColumn: VelocidadeVento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fato_Clima = m
+		mode: import
+		source =
+				let
+				    Fonte = Folder.Files("D:\Desktop\Turuko\Faculdade\BI\Dados Projeto"),
+				    #"Arquivos Ocultos Filtrados1" = Table.SelectRows(Fonte, each [Attributes]?[Hidden]? <> true),
+				    #"Invocar Função Personalizada1" = Table.AddColumn(#"Arquivos Ocultos Filtrados1", "Transformar Arquivo", each #"Transformar Arquivo"([Content])),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Invocar Função Personalizada1", {"Name", "Nome da Origem"}),
+				    #"Outras Colunas Removidas1" = Table.SelectColumns(#"Colunas Renomeadas1", {"Nome da Origem", "Transformar Arquivo"}),
+				    #"Coluna de Tabela Expandida1" = Table.ExpandTableColumn(#"Outras Colunas Removidas1", "Transformar Arquivo", Table.ColumnNames(#"Transformar Arquivo"(#"Arquivo de Amostra"))),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna de Tabela Expandida1",{{"Hora UTC", "HoraUTC"}, {"PRECIPITAÇÃO TOTAL, HORÁRIO (mm)", "Precipitacao"}, {"PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)", "Pressao"}, {"PRESSÃO ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)", "Pressao_Max"}, {"PRESSÃO ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)", "Pressao_Min"}, {"RADIACAO GLOBAL (Kj/m²)", "Radiacao"}, {"TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)", "Temperatura"}, {"TEMPERATURA DO PONTO DE ORVALHO (°C)", "Ponto_Orvalho"}, {"TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)", "Temperatura_Max"}, {"TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)", "Temperatura_Min"}, {"TEMPERATURA ORVALHO MAX. NA HORA ANT. (AUT) (°C)", "Orvalho_Max"}, {"TEMPERATURA ORVALHO MIN. NA HORA ANT. (AUT) (°C)", "Orvalho_Min"}, {"UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)", "Umidade_Max"}, {"UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)", "Umidade_Min"}, {"UMIDADE RELATIVA DO AR, HORARIA (%)", "Umidade"}, {"VENTO, DIREÇÃO HORARIA (gr) (° (gr))", "Direcao_Vento"}, {"VENTO, RAJADA MAXIMA (m/s)", "Rajada_Vento"}, {"VENTO, VELOCIDADE HORARIA (m/s)", "Velocidade_Vento"}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Colunas Renomeadas",{""}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Removidas",{{"Data", type date}, {"HoraUTC", type text}, {"Precipitacao", type number}, {"Pressao", type number}, {"Pressao_Max", type number}, {"Pressao_Min", type number}, {"Radiacao", type number}, {"Temperatura", type number}, {"Ponto_Orvalho", type number}, {"Temperatura_Max", type number}, {"Temperatura_Min", type number}, {"Orvalho_Max", type number}, {"Orvalho_Min", type number}, {"Umidade_Max", type number}, {"Umidade_Min", type number}, {"Umidade", type number}, {"Direcao_Vento", Int64.Type}, {"Rajada_Vento", type number}, {"Velocidade_Vento", type number}}),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Tipo Alterado",{{"Nome da Origem", "NomeArquivo"}, {"Pressao_Max", "PressaoMax"}, {"Pressao_Min", "PressaoMin"}, {"Ponto_Orvalho", "PontoOrvalho"}, {"Temperatura_Max", "TemperaturaMax"}, {"Temperatura_Min", "TemperaturaMin"}, {"Orvalho_Max", "OrvalhoMax"}, {"Orvalho_Min", "OrvalhoMin"}, {"Umidade_Max", "UmidadeMax"}, {"Umidade_Min", "UmidadeMin"}, {"Direcao_Vento", "DirecaoVento"}, {"Rajada_Vento", "RajadaVento"}, {"Velocidade_Vento", "VelocidadeVento"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas2",{{"NomeArquivo", type text}, {"Data", type date}, {"HoraUTC", type text}, {"DirecaoVento", Int64.Type}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

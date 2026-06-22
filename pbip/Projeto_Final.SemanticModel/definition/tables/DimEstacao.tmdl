@@ -1,0 +1,81 @@
+table DimEstacao
+	lineageTag: f5a94c26-92c1-469f-8dc5-d7f4da3587b5
+
+	column NomeArquivo
+		isHidden
+		lineageTag: 7129d7e1-781c-437f-8d55-59043337ada5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [NomeArquivo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoEstacao =
+			
+			PATHITEM (
+			    SUBSTITUTE ( DimEstacao[NomeArquivo], "_", "|" ),
+			    4,
+			    TEXT
+			)
+		lineageTag: 5be133c2-47a4-4055-a159-77b579726bd3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF =
+			
+			PATHITEM (
+			    SUBSTITUTE ( DimEstacao[NomeArquivo], "_", "|" ),
+			    3,
+			    TEXT
+			)
+		lineageTag: 6e0846da-8bc3-4ee2-b5f0-cf0d78dfd79b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Regiao =
+			
+			PATHITEM (
+			    SUBSTITUTE ( DimEstacao[NomeArquivo], "_", "|" ),
+			    2,
+			    TEXT
+			)
+		lineageTag: 5bca8106-b3e8-4cd9-a297-c525c7bf0bb0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estacao =
+			
+			PATHITEM (
+			    SUBSTITUTE ( DimEstacao[NomeArquivo], "_", "|" ),
+			    5,
+			    TEXT
+			)
+		lineageTag: bce84bf2-e1af-4e97-96d5-c9408a443e62
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Completo' =
+			
+			DimEstacao[Estacao] & " (" & DimEstacao[UF] & ")"
+		lineageTag: 17dbed86-88da-44d9-b3ab-c42ee00f1ebc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEstacao = calculated
+		mode: import
+		source =
+				
+				DISTINCT (
+				    SELECTCOLUMNS (
+				        Fato_Clima,
+				        "NomeArquivo", Fato_Clima[NomeArquivo]
+				    )
+				)
+
+	annotation PBI_Id = 1ddd68a2879c4c9a87d7e3f2c42d4b23
+

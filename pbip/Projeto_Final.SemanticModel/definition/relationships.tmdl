@@ -1,0 +1,12 @@
+relationship 054e0146-94f5-440a-6a27-e27359bb9643
+	fromColumn: Fato_Clima.Data
+	toColumn: DimCalendario.Date
+
+relationship 734ba44c-dd65-1b00-9cc9-fe23bf5c04a5
+	fromColumn: Fato_Clima.HoraUTC
+	toColumn: DimHorario.HoraUTC
+
+relationship 16f8fd86-edd9-6cf3-b928-ca2d5b6ad433
+	fromColumn: Fato_Clima.NomeArquivo
+	toColumn: DimEstacao.NomeArquivo
+

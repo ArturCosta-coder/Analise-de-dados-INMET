@@ -1,0 +1,66 @@
+expression Parâmetro1 = #"Arquivo de Amostra" meta [IsParameterQuery=true, BinaryIdentifier=#"Arquivo de Amostra", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 9699195f-6da8-4d2c-a3a6-2111d64279ef
+	queryGroup: 'Transformar Arquivo de Arquivos Brutos\Consultas Auxiliares'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Arquivo de Amostra' =
+		let
+		    Fonte = Folder.Files("D:\Desktop\Turuko\Faculdade\BI\Dados Projeto"),
+		    Navegação1 = Fonte{0}[Content]
+		in
+		    Navegação1
+	lineageTag: 6b2cf48c-7e19-49a1-b63f-f8d986b04f22
+	queryGroup: 'Transformar Arquivo de Arquivos Brutos\Consultas Auxiliares'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transformar o Arquivo de Exemplo' =
+		let
+		    Fonte = Csv.Document(Parâmetro1,[Delimiter=";", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Linhas Superiores Removidas" = Table.Skip(Fonte,8),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Linhas Superiores Removidas", [PromoteAllScalars=true]),
+		    #"Cabeçalhos rebaixados" = Table.DemoteHeaders(#"Cabeçalhos Promovidos"),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos rebaixados",{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}, {"Column16", type text}, {"Column17", type text}, {"Column18", type text}, {"Column19", type text}, {"Column20", type any}}),
+		    #"Cabeçalhos Promovidos1" = Table.PromoteHeaders(#"Tipo Alterado", [PromoteAllScalars=true]),
+		    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos1",{{"Data", type date}, {"Hora UTC", type text}, {"PRECIPITAÇÃO TOTAL, HORÁRIO (mm)", type number}, {"PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)", type number}, {"PRESSÃO ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)", type number}, {"PRESSÃO ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)", type number}, {"RADIACAO GLOBAL (Kj/m²)", type number}, {"TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)", type number}, {"TEMPERATURA DO PONTO DE ORVALHO (°C)", type number}, {"TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)", type number}, {"TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)", type number}, {"TEMPERATURA ORVALHO MAX. NA HORA ANT. (AUT) (°C)", type number}, {"TEMPERATURA ORVALHO MIN. NA HORA ANT. (AUT) (°C)", type number}, {"UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)", Int64.Type}, {"UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)", Int64.Type}, {"UMIDADE RELATIVA DO AR, HORARIA (%)", Int64.Type}, {"VENTO, DIREÇÃO HORARIA (gr) (° (gr))", Int64.Type}, {"VENTO, RAJADA MAXIMA (m/s)", type number}, {"VENTO, VELOCIDADE HORARIA (m/s)", type number}, {"", type any}})
+		in
+		    #"Tipo Alterado1"
+	lineageTag: d3823ba9-43ec-4618-a4fe-49dc88ff2928
+	queryGroup: 'Transformar Arquivo de Arquivos Brutos'
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
+expression 'Transformar Arquivo' =
+		let
+		    Fonte = (Parâmetro1 as binary) => let
+		    Fonte = Csv.Document(Parâmetro1,[Delimiter=";", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Linhas Superiores Removidas" = Table.Skip(Fonte,8),
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Linhas Superiores Removidas", [PromoteAllScalars=true]),
+		    #"Cabeçalhos rebaixados" = Table.DemoteHeaders(#"Cabeçalhos Promovidos"),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos rebaixados",{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}, {"Column16", type text}, {"Column17", type text}, {"Column18", type text}, {"Column19", type text}, {"Column20", type any}}),
+		    #"Cabeçalhos Promovidos1" = Table.PromoteHeaders(#"Tipo Alterado", [PromoteAllScalars=true]),
+		    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos1",{{"Data", type date}, {"Hora UTC", type text}, {"PRECIPITAÇÃO TOTAL, HORÁRIO (mm)", type number}, {"PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)", type number}, {"PRESSÃO ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)", type number}, {"PRESSÃO ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)", type number}, {"RADIACAO GLOBAL (Kj/m²)", type number}, {"TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)", type number}, {"TEMPERATURA DO PONTO DE ORVALHO (°C)", type number}, {"TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)", type number}, {"TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)", type number}, {"TEMPERATURA ORVALHO MAX. NA HORA ANT. (AUT) (°C)", type number}, {"TEMPERATURA ORVALHO MIN. NA HORA ANT. (AUT) (°C)", type number}, {"UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)", Int64.Type}, {"UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)", Int64.Type}, {"UMIDADE RELATIVA DO AR, HORARIA (%)", Int64.Type}, {"VENTO, DIREÇÃO HORARIA (gr) (° (gr))", Int64.Type}, {"VENTO, RAJADA MAXIMA (m/s)", type number}, {"VENTO, VELOCIDADE HORARIA (m/s)", type number}, {"", type any}})
+		in
+		    #"Tipo Alterado1"
+		in
+		    Fonte
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transformar o Arquivo de Exemplo""}" ]
+	lineageTag: 3fb38770-2319-429b-9f07-6cf7c9d4eeff
+	queryGroup: 'Transformar Arquivo de Arquivos Brutos\Consultas Auxiliares'
+
+	annotation PBI_ResultType = Function
+
+expression 'Arquivos Brutos' =
+		let
+		    Fonte = Folder.Files("D:\Desktop\Turuko\Faculdade\BI\Dados Projeto")
+		in
+		    Fonte
+	lineageTag: 8e4ce098-fec3-443b-9ba5-d505c73d3bd9
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

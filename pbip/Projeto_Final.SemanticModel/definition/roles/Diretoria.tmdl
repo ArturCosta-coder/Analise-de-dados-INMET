@@ -1,0 +1,5 @@
+role Diretoria
+	modelPermission: read
+
+	annotation PBI_Id = d25dc27922b343dfb040b20c677bfb76
+

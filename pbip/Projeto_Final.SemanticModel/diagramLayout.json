@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 433,
+            "y": 0
+          },
+          "nodeIndex": "Fato_Clima",
+          "nodeLineageTag": "c853ec76-3a8e-46cc-a1fd-352a9bb0f5e2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "DimCalendario",
+          "nodeLineageTag": "cdd38eeb-fa3c-487a-8f8f-c98bdc8336c0",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 850,
+            "y": 4
+          },
+          "nodeIndex": "DimHorario",
+          "nodeLineageTag": "da7da6f8-78d0-4ad3-b91b-75de65d24fac",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 434,
+            "y": 500
+          },
+          "nodeIndex": "DimEstacao",
+          "nodeLineageTag": "f5a94c26-92c1-469f-8dc5-d7f4da3587b5",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 829,
+            "y": 429
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "c38402ea-7fcf-4d9f-8c29-b857c113e296",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

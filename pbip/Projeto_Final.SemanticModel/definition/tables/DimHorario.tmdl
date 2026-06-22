@@ -1,0 +1,54 @@
+table DimHorario
+	lineageTag: da7da6f8-78d0-4ad3-b91b-75de65d24fac
+
+	column HoraUTC
+		isHidden
+		lineageTag: f09bb4ab-6b63-404d-9bda-6e9372e8bb3f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [HoraUTC]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hora
+		lineageTag: fac1268b-5967-404a-9433-5928f0ba7fae
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Hora]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Turno
+		lineageTag: 6180945c-0026-46d7-a469-26b69e195a4a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Turno]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimHorario = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS (
+				    DISTINCT (
+				        SELECTCOLUMNS (
+				            Fato_Clima,
+				            "HoraUTC", Fato_Clima[HoraUTC]
+				        )
+				    ),
+				    "Hora", VALUE ( LEFT ( [HoraUTC], 2 ) ),
+				    "Turno",
+				        SWITCH (
+				            TRUE(),
+				            VALUE ( LEFT ( [HoraUTC], 2 ) ) < 6, "Madrugada",
+				            VALUE ( LEFT ( [HoraUTC], 2 ) ) < 12, "Manhã",
+				            VALUE ( LEFT ( [HoraUTC], 2 ) ) < 18, "Tarde",
+				            "Noite"
+				        )
+				)
+
+	annotation PBI_Id = e6d86149fff74b1eb0976481ab3e1471
+
